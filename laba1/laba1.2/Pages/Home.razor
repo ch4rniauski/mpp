@@ -1,0 +1,24 @@
+﻿@page "/"
+
+<h3>Сообщение от WEB API</h3>
+
+@if (_message is null)
+{
+    <p>Загрузка сообщения</p>
+}
+else
+{
+    <p>@_message</p>
+}
+
+@code {
+    private string? _message;
+
+    [Inject]
+    private HttpClient Http { get; set; } = null!;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        _message = await Http.GetStringAsync("");
+    }
+}
