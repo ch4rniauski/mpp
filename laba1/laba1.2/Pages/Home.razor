@@ -1,24 +1,62 @@
 ﻿@page "/"
+@using System.Text.Json
 
-<h3>Сообщение от WEB API</h3>
+<h3>Клиенты из БД</h3>
 
-@if (_message is null)
+@if (_clients == null)
 {
-    <p>Загрузка сообщения</p>
+    <p>Загрузка...</p>
 }
 else
 {
-    <p>@_message</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Имя</th>
+                <th>Тип</th>
+                <th>Паспорт</th>
+                <th>Адрес</th>
+                <th>Телефон</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var client in _clients)
+        {
+            <tr>
+                <td>@client.Name</td>
+                <td>@client.ClientType</td>
+                <td>@(client.Passport ?? "")</td>
+                <td>@client.Address</td>
+                <td>@client.Phone</td>
+            </tr>
+        }
+        </tbody>
+    </table>
 }
 
 @code {
-    private string? _message;
+    private List<ClientDto>? _clients;
 
-    [Inject]
-    private HttpClient Http { get; set; } = null!;
-    
+    [Inject] private HttpClient Http { get; set; } = null!;
+
     protected override async Task OnInitializedAsync()
     {
-        _message = await Http.GetStringAsync("");
+        var json = await Http.GetStringAsync("/");
+        
+        var options = new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        };
+        
+        _clients = JsonSerializer.Deserialize<List<ClientDto>>(json, options);
     }
+
+    private record ClientDto(
+        Guid Id,
+        string ClientType,
+        string Name,
+        string Passport,
+        string Address,
+        string Phone
+    );
 }
