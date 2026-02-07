@@ -1,0 +1,27 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+input, button {
+    margin: 5px 0;
+    padding: 6px;
+}
+
+.credit-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.credit-item span {
+    display: inline-block;
+    width: 150px;
+}
+
+.update-form {
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px dashed #aaa;
+    margin-bottom: 15px;
+}
