@@ -28,6 +28,7 @@ public class CreditEntityConfiguration : IEntityTypeConfiguration<CreditEntity>
 
         builder
             .Property(c => c.IssueDate)
+            .HasColumnType("date")
             .IsRequired();
 
         builder

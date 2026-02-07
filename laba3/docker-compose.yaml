@@ -1,0 +1,14 @@
+services:
+  laba3-postgres:
+    image: postgres:16.11-alpine3.23
+    container_name: laba3-postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=Credits
+    volumes:
+      - postgres-laba3-data:/var/lib/postgresql/data
+volumes:
+  postgres-laba3-data:
