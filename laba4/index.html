@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <title>Помощник сайта (WebSocket)</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <header class="page-header">
+        <h1>Страница с WebSocket-помощником</h1>
+    </header>
+
+    <main class="page-content">
+        <section class="status-section">
+            <h2>Состояние подключения</h2>
+            <div id="connection-status" class="status status--disconnected">
+                Отключено
+            </div>
+            <button id="connect-btn" type="button">Подключиться</button>
+            <button id="disconnect-btn" type="button" disabled>Отключиться</button>
+        </section>
+
+        <section class="log-section">
+            <h2>Журнал сообщений</h2>
+            <ul id="log"></ul>
+        </section>
+    </main>
+
+    <div id="assistant-popup" class="popup">
+        <div class="popup__content">
+            <div class="popup__title">Сообщение помощника</div>
+            <div id="popup-text" class="popup__text"></div>
+            <div class="popup__buttons">
+                <button id="popup-close" type="button">Закрыть</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
