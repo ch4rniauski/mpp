@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Библиотека</title>
+</head>
+<body>
+    <form method="POST" action="create/">
+        {% csrf_token %}
+        <p>
+            <label>Название</label><br>
+            <input type="text" name="title" />
+        </p>
+        <p>
+            <label>Автор</label><br>
+            <input type="text" name="author" />
+        </p>
+        <p>
+            <label>Жанр</label><br>
+            <input type="text" name="genre" />
+        </p>
+        <p>
+            <label>Год издания</label><br>
+            <input type="number" name="year" />
+        </p>
+        <input type="submit" value="Сохранить">
+    </form>
+
+    {% if books.count > 0 %}
+    <h2>Список книг</h2>
+    <table>
+        <thead><th>Id</th><th>Название</th><th>Автор</th><th>Жанр</th><th>Год</th><th></th></thead>
+        {% for book in books %}
+        <tr>
+            <td>{{ book.id }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.genre }}</td>
+            <td>{{ book.year }}</td>
+            <td><a href="edit/{{ book.id }}/">Изменить</a> | <a href="delete/{{ book.id }}/">Удалить</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</body>
+</html>
