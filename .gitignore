@@ -482,3 +482,45 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+##
+## Python / Django
+##
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Bytecode and caches
+*.pyo
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+
+# Packaging
+*.egg-info/
+
+# Test / coverage
+.coverage
+htmlcov/
+
+# Django
+db.sqlite3
+*.sqlite3
+course4/**/staticfiles/
+course4/**/media/
+
+##
+## .NET build artifacts
+##
+
+# Malformed output dirs with backslash in the name (e.g. bin\Debug)
+**/bin\\Debug/
+**/bin\\Release/
+**/obj\\Debug/
+**/obj\\Release/
