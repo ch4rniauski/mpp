@@ -78,15 +78,21 @@ def task1():
 
 
 def task2():
-    balance = read_int("Введите начальный баланс: ")
-    if balance < 0:
-        print("Ошибка: баланс не может быть отрицательным.")
-        return
+    while True:
+        text = input("Введите начальный баланс: ")
+        try:
+            balance = float(text)
+            if balance < 0:
+                print("Ошибка: баланс не может быть отрицательным.")
+                continue
+            break
+        except Exception:
+            print("Ошибка: введите число.")
 
     account = BankAccount(balance)
 
     while True:
-        print(f"\nТекущий баланс: {account.balance}")
+        print(f"\nТекущий баланс: {account.balance:.2f}")
         print("1 — Внести средства")
         print("2 — Снять средства")
         print("0 — Назад")
